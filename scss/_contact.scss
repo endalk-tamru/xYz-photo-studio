@@ -1,0 +1,49 @@
+.contact-main {
+  div {
+    h4 {
+      color: $secondary-color;
+    }
+
+    &.contact-info {
+      line-height: 1;
+      @include set-background(lighten($primary-color, 15%));
+      width: 30%;
+      height: auto;
+      padding: 10px 0;
+      border-radius: 5px;
+    }
+
+    .contact-form {
+      @include placeholder;
+      .form-control {
+        @include set-background(lighten($primary-color, 15%));
+        margin: 0 0 20px;
+        border: none;
+        border-bottom: 2px solid $secondary-color;
+        border-radius: 0%;
+        width: 100%;
+        resize: none;
+
+        &:focus {
+          outline: none;
+          border: none;
+          border-bottom: 2px solid set-text-color($primary-color);
+          caret-color: set-text-color($primary-color);
+        }
+      }
+
+      button[type="submit"] {
+        border: 1px solid $secondary-color;
+        border-radius: 5px;
+        color: set-text-color($primary-color);
+        @include ease-out;
+
+        &:hover {
+          background-color: $secondary-color;
+          color: $third-color;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

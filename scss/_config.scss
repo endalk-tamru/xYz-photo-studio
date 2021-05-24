@@ -1,0 +1,82 @@
+$primary-color: rgba(0, 0, 0, 0.9);
+$secondary-color: #ffd700;
+$third-color: #111;
+$bg-img: url(../img/thumb/camera_pic_1.jpg);
+
+// ----------------- CUSTOMIZE SIMPLE-LIGHTBOX'S DEFAULTS ----------------- //
+$sl-font-family: 'Dancing Script', 'KoHo', 'Poppins', sans-serif;
+$sl-overlay-background: #000;
+$sl-overlay-opacity: 0.8;
+$sl-navigation-color: $secondary-color;
+
+// ----------------- TRANSITION FUNC ----------------- //
+@mixin ease-out {
+  transition: all 0.3s ease-out;
+}
+
+// ----------------- OVERLAY AND BLUR EFFECT ----------------- //
+@mixin overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  backdrop-filter: blur(1px);
+  background: rgba($primary-color, 0.7);
+}
+
+// ----------------- PLACEHOLDER ----------------- //
+@mixin placeholder {
+  ::placeholder {
+    color: set-text-color($primary-color);
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    color: set-text-color($primary-color);
+  }
+  ::-ms-input-placeholder {
+    color: set-text-color($primary-color);
+  }
+}
+
+// ----------------- SET TEXT COLOR BASED ON BG ----------------- //
+@function set-text-color($color) {
+  @if (lightness($color) > 70) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+
+// ----------------- SET BACKGROUND & TEXT COLOR ----------------- //
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+}
+
+// ----------------- MEDIA QUERY MIXINS ----------------- //
+@mixin media-sm {
+  @media screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
